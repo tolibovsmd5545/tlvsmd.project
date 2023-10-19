@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% for post in  latest_list %}
+<div class="post">
+    <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+    <p>{{ post.body | slice:":100"}}</p>
+    <p>{{ post.author }}</p>
+    <p>{{ post.data }}</p>
+    <img src="{% static 'image/img.jpg' %}" alt="">
+</div>
+{% endfor %}
+{% endblock content %}

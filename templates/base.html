@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'CSS/base.css' %}">
+    <title>Document</title>
+</head>
+<body>
+
+    <header>
+        <h1><a href="{% url 'home' %}">Blog Post</a></h1>
+    </header>
+
+    {% if user.is_authenticated %}
+    <p>Xush kelibsiz, {{user.username}}! </p>
+    <p>
+        <a href="{% url 'logout' %}">Chiqish</a>
+    </p>
+    {% else %}
+    <p><a href="{% url 'login' %}">Saytga kirish</a></p>
+    <p><a href="{% url 'signup' %}">Ro'yhatdan o'tish</a></p>
+    {% endif %}
+
+    <main>
+        {% block content %}
+        {% endblock content %}
+    </main>
+
+    <footer>
+        <h1><a href="{% url 'post_new' %}">yangi</a></h1>
+        <br>
+        <h1>FOOTER</h1>
+    </footer>
+
+</body>
+</html>
+
